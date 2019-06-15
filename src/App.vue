@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
 </template>
 
 <script>
+// eslint-disable-next-line
+import $ from 'jquery';
+
 export default {
   name: 'App',
 };
 </script>
 
-<style>
+<style lang="scss">
+@import './assets/sass/all.scss';
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
+import Temp from '@/components/Temp';
+import Sign from '@/components/pages/Sign';
 
 Vue.use(Router);
 
@@ -8,8 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld,
+      name: 'Temp',
+      component: Temp,
+    },
+    {
+      path: '/sign',
+      name: 'Sign',
+      component: Sign,
     },
   ],
 });
