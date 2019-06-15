@@ -33,7 +33,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../.././assets/sass/LogIn";
+@import "../.././assets/sass/component-sass/Sign";
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -62,7 +62,8 @@ export default {
       const url = `${process.env.APIPATH}/admin/signin`;
       vm.$http.post(url, vm.user).then((response) => {
         // eslint-disable-next-line
-        console.log(response)
+        console.log(response);
+        vm.$router.push('/admin');
       });
     },
   },
