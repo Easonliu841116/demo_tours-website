@@ -10,7 +10,7 @@
       >
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <router-link to="/" class="nav-link" href="#" @click="signOut">Sign out</router-link>
+          <a class="nav-link" href="#" @click.prevent="signOut">Sign out</a>
         </li>
       </ul>
     </nav>
@@ -22,7 +22,9 @@ export default {
     signOut() {
       const vm = this;
       const url = `${process.env.APIPATH}/logout`;
-      vm.$http.post(url);
+      vm.$http.post(url).then(() => {
+        vm.$router.push('/sign');
+      });
     },
   },
 };

@@ -20,11 +20,12 @@
           </div>
           <div class="modal-body">
             是否刪除
-            <strong class="text-danger">{{ tempProduct.title }}</strong> 商品(刪除後將無法恢復)。
+            <strong class="text-danger">{{ tempProductData.title }}</strong> 商品(刪除後將無法恢復)。
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-danger">確認刪除</button>
+            <button type="button" class="btn btn-danger"
+            @click.prevent="removeProduct">確認刪除</button>
           </div>
         </div>
       </div>
@@ -32,15 +33,35 @@
   </div>
 </template>
 <script>
+import $ from 'jquery';
+
 export default {
-  data() {
-    return {
-      tempProduct: {},
-    };
+  props: {
+    tempProductData: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
   methods: {
-    addProducts() {
-
+    removeProduct() {
+      const vm = this;
+      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProductData.id}`;
+      vm.$http.delete(url).then((response) => {
+        if (response.data.success) {
+          vm.emitGetProducts();
+          $('#delProductModal').modal('hide');
+        } else {
+          // eslint-disable-next-line
+          console.log('刪除失敗')
+          vm.emitGetProducts();
+          $('#delProductModal').modal('hide');
+        }
+      });
+    },
+    emitGetProducts() {
+      this.$emit('emitGetProducts');
     },
   },
 };

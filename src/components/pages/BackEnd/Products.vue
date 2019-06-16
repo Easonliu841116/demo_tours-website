@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-right mt-4">
-      <button class="btn btn-primary" @click.prevent="showEditModal"
+      <button class="btn btn-primary" @click.prevent="showEditModal(true)"
       >建立新的產品</button>
     </div>
     <table class="table mt-4">
@@ -27,18 +27,24 @@
             <span v-else>未啟用</span>
           </td>
           <td>
-            <button class="btn btn-outline-primary btn-sm" @click="showEditModal">編輯</button>
+            <button class="btn btn-outline-primary btn-sm"
+            @click="showEditModal(false, item)">編輯</button>
           </td>
           <td>
-            <button class="btn btn-outline-primary btn-sm" @click="showDelModal">刪除</button>
+            <button class="btn btn-outline-primary btn-sm" @click="showDelModal(item)">刪除</button>
           </td>
         </tr>
       </tbody>
     </table>
     <!-- EditModal -->
-    <EditModal/>
+    <EditModal
+    @emitGetProducts="getProducts"
+    :tempProductData="tempProducts"
+    :isNewData="isNew"/>
     <!-- DelModal -->
-    <DelModal/>
+    <DelModal
+    :tempProductData="tempProducts"
+    @emitGetProducts="getProducts"/>
   </div>
 </template>
 <script>
@@ -50,21 +56,34 @@ export default {
   data() {
     return {
       products: {},
+      tempProducts: {},
+      isNew: false,
     };
   },
   methods: {
-    showEditModal() {
-      $('#productModal').modal('show');
+    showEditModal(isNew, item) {
+      const vm = this;
+      if (isNew) {
+        vm.tempProducts = {};
+        vm.isNew = true;
+        $('#EditProductModal').modal('show');
+      } else {
+        /* 若是要編輯商品，則將該商品的資訊以assign的方式加入至tempProducts中，
+        /使能加以修改並不影響原資料 */
+        vm.tempProducts = Object.assign({}, item);
+        vm.isNew = false;
+        $('#EditProductModal').modal('show');
+      }
     },
-    showDelModal() {
+    showDelModal(item) {
+      const vm = this;
+      vm.tempProducts = Object.assign({}, item);
       $('#delProductModal').modal('show');
     },
     getProducts(page = 1) {
       const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${page}`;
       vm.$http.get(url).then((response) => {
-        // eslint-disable-next-line
-        console.log(response);
         vm.products = response.data.products;
       });
     },
