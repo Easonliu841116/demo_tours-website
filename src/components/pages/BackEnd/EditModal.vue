@@ -102,7 +102,6 @@
   </div>
 </template>
 <script>
-/* eslint-disable */
 import $ from 'jquery';
 
 export default {
@@ -161,7 +160,7 @@ export default {
       // 送出前調整Content-Type
       vm.$http.post(url, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
         },
       }).then((response) => {
         // eslint-disable-next-line
@@ -171,7 +170,8 @@ export default {
           // eslint-disable-next-line
           console.log(vm.tempProductData.imageUrl);
         } else {
-          console.log(vm.tempProductData.imageUrl,'上傳失敗');
+          // eslint-disable-next-line
+          console.log(vm.tempProductData.imageUrl, '上傳失敗');
         }
         vm.isFileLoading = false;
       });
