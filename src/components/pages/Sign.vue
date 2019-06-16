@@ -33,7 +33,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../.././assets/sass/component-sass/Sign";
+@import "../.././assets/sass/BackEnd/Sign";
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -63,7 +63,9 @@ export default {
       vm.$http.post(url, vm.user).then((response) => {
         // eslint-disable-next-line
         console.log(response);
-        vm.$router.push('/admin');
+        if (response.data.success) {
+          vm.$router.push('/admin/products');
+        }
       });
     },
   },

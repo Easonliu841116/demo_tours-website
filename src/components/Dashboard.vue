@@ -13,7 +13,7 @@
 </template>
 
 <style lang="scss">
-@import '.././assets/sass/component-sass/BackEnd';
+@import '.././assets/sass/BackEnd/Dashboard';
 </style>
 
 <script>

@@ -2,12 +2,17 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Temp from '@/components/Temp';
 import Sign from '@/components/pages/Sign';
-import BackEnd from '@/components/BackEnd';
+import Dashboard from '@/components/Dashboard';
+import Products from '@/components/pages/BackEnd/Products';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
+    {
+      path: '*',
+      redirect: '/sign',
+    },
     {
       path: '/',
       name: 'Temp',
@@ -20,8 +25,16 @@ export default new Router({
     },
     {
       path: '/admin',
-      name: 'BackEnd',
-      component: BackEnd,
+      name: 'Dashboard',
+      component: Dashboard,
+      children: [
+        {
+          path: 'products',
+          name: 'Products',
+          component: Products,
+          meta: { requiresAuth: true },
+        },
+      ],
     },
   ],
 });

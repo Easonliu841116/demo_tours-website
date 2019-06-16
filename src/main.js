@@ -10,6 +10,7 @@ import router from './router';
 
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
+axios.defaults.withCredentials = true;
 
 /* eslint-disable no-new */
 new Vue({
@@ -17,4 +18,16 @@ new Vue({
   router,
   components: { App },
   template: '<App/>',
+});
+
+router.beforeEach((to, from, next) => {
+  const url = `${process.env.APIPATH}/api/user/check`;
+  if (to.meta.requiresAuth) {
+    axios.post(url).then((response) => {
+      // eslint-disable-next-line
+      response.data.success ? next() : next({ path: '/login' });
+    });
+  } else {
+    next();
+  }
 });

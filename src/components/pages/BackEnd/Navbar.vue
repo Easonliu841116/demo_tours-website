@@ -10,9 +10,20 @@
       >
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
+          <router-link to="/" class="nav-link" href="#" @click="signOut">Sign out</router-link>
         </li>
       </ul>
     </nav>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    signOut() {
+      const vm = this;
+      const url = `${process.env.APIPATH}/logout`;
+      vm.$http.post(url);
+    },
+  },
+};
+</script>
