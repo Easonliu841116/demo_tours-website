@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- Loading -->
+    <loading :active.sync="isLoading"></loading>
     <div class="text-right mt-4">
       <button class="btn btn-primary" @click.prevent="showEditModal(true)"
       >建立新的產品</button>
@@ -58,6 +60,7 @@ export default {
       products: {},
       tempProducts: {},
       isNew: false,
+      isLoading: false,
     };
   },
   methods: {
@@ -82,8 +85,10 @@ export default {
     },
     getProducts(page = 1) {
       const vm = this;
+      vm.isLoading = true;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${page}`;
       vm.$http.get(url).then((response) => {
+        vm.isLoading = false;
         vm.products = response.data.products;
       });
     },

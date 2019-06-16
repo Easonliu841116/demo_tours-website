@@ -29,13 +29,15 @@
                 <div class="form-group">
                   <label for="customFile">
                     或 上傳圖片
-                    <i class="fas fa-spinner fa-spin"></i>
+                    <i class="fas fa-spinner fa-spin" v-if="isFileLoading"></i>
                   </label>
-                  <input type="file" id="customFile" class="form-control" ref="files">
+                  <input type="file" id="customFile" class="form-control"
+                  ref="files" @change="uploadFile">
                 </div>
                 <img
                   img="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828346ed697837ce808cae68d3ddc3cf&auto=format&fit=crop&w=1350&q=80"
                   class="img-fluid"
+                  :src="tempProductData.imageUrl"
                   alt
                 >
               </div>
@@ -45,7 +47,6 @@
                   <input type="text" class="form-control" id="title"
                   placeholder="請輸入標題" v-model="tempProductData.title">
                 </div>
-
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="category">分類</label>
@@ -58,7 +59,6 @@
                     placeholder="請輸入單位" v-model="tempProductData.unit">
                   </div>
                 </div>
-
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="origin_price">原價</label>
@@ -72,7 +72,6 @@
                   </div>
                 </div>
                 <hr>
-
                 <div class="form-group">
                   <label for="description">產品描述</label>
                   <textarea type="text" class="form-control" id="description"
@@ -103,9 +102,15 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 import $ from 'jquery';
 
 export default {
+  data() {
+    return {
+      isFileLoading: false,
+    };
+  },
   props: {
     tempProductData: {
       type: Object,
@@ -121,6 +126,9 @@ export default {
     },
   },
   methods: {
+    emitGetProducts() {
+      this.$emit('emitGetProducts');
+    },
     updateProduct() {
       const vm = this;
       let httpMethod = 'post';
@@ -142,8 +150,31 @@ export default {
         }
       });
     },
-    emitGetProducts() {
-      this.$emit('emitGetProducts');
+    uploadFile() {
+      const vm = this;
+      const imgFile = vm.$refs.files.files[0];
+      // 模擬表單送出
+      const formData = new FormData();
+      formData.append('file-to-upload', imgFile);
+      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/upload`;
+      vm.isFileLoading = true;
+      // 送出前調整Content-Type
+      vm.$http.post(url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+      }).then((response) => {
+        // eslint-disable-next-line
+        // console.log(response.data);
+        if (response.data.success) {
+          vm.$set(vm.tempProductData, 'imageUrl', response.data.imageUrl);
+          // eslint-disable-next-line
+          console.log(vm.tempProductData.imageUrl);
+        } else {
+          console.log(vm.tempProductData.imageUrl,'上傳失敗');
+        }
+        vm.isFileLoading = false;
+      });
     },
   },
 };
