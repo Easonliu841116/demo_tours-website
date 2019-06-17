@@ -65,6 +65,8 @@ export default {
         console.log(response);
         if (response.data.success) {
           vm.$router.push('/admin/products');
+        } else {
+          vm.$bus.$emit('alert', response.data.message, 'danger');
         }
       });
     },

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Temp from '@/components/Temp';
-import Sign from '@/components/pages/Sign';
+import Register from '@/components/pages/Register';
 import Dashboard from '@/components/Dashboard';
 import Products from '@/components/pages/BackEnd/Products';
 
@@ -11,7 +11,7 @@ export default new Router({
   routes: [
     {
       path: '*',
-      redirect: '/sign',
+      redirect: '/register',
     },
     {
       path: '/',
@@ -19,9 +19,9 @@ export default new Router({
       component: Temp,
     },
     {
-      path: '/sign',
-      name: 'Sign',
-      component: Sign,
+      path: '/register',
+      name: 'Register',
+      component: Register,
     },
     {
       path: '/admin',

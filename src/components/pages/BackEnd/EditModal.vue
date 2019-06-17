@@ -141,11 +141,11 @@ export default {
         if (response.data.success) {
           $('#EditProductModal').modal('hide');
           vm.emitGetProducts();
+          vm.$bus.$emit('alert', '上傳完成', 'success');
         } else {
           $('#EditProductModal').modal('hide');
           vm.emitGetProducts();
-          // eslint-disable-next-line
-          console.log('新增失敗');
+          vm.$bus.$emit('alert', '上傳失敗，請稍後在試', 'danger');
         }
       });
     },
@@ -163,15 +163,10 @@ export default {
           'Content-Type': 'multipart/form-data',
         },
       }).then((response) => {
-        // eslint-disable-next-line
-        // console.log(response.data);
         if (response.data.success) {
           vm.$set(vm.tempProductData, 'imageUrl', response.data.imageUrl);
-          // eslint-disable-next-line
-          console.log(vm.tempProductData.imageUrl);
         } else {
-          // eslint-disable-next-line
-          console.log(vm.tempProductData.imageUrl, '上傳失敗');
+          vm.$bus.$emit('alert', 'Error: 檔案過大或格式有誤', 'danger');
         }
         vm.isFileLoading = false;
       });

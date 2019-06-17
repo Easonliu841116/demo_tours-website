@@ -47,12 +47,17 @@
     <DelModal
     :tempProductData="tempProducts"
     @emitGetProducts="getProducts"/>
+    <!-- Pagination -->
+    <Pagination
+    @emitGetProduct="getProducts"
+    :pageData="pages"/>
   </div>
 </template>
 <script>
 import $ from 'jquery';
 import EditModal from './EditModal';
 import DelModal from './DelModal';
+import Pagination from './Pagination';
 
 export default {
   data() {
@@ -61,6 +66,7 @@ export default {
       tempProducts: {},
       isNew: false,
       isLoading: false,
+      pages: {},
     };
   },
   methods: {
@@ -72,15 +78,15 @@ export default {
         $('#EditProductModal').modal('show');
       } else {
         /* 若是要編輯商品，則將該商品的資訊以assign的方式加入至tempProducts中，
-        /使能加以修改並不影響原資料 */
-        vm.tempProducts = Object.assign({}, item);
+        避免物件傳參考特的特性 */
+        vm.tempProducts = { ...item };
         vm.isNew = false;
         $('#EditProductModal').modal('show');
       }
     },
     showDelModal(item) {
       const vm = this;
-      vm.tempProducts = Object.assign({}, item);
+      vm.tempProducts = { ...item };
       $('#delProductModal').modal('show');
     },
     getProducts(page = 1) {
@@ -90,6 +96,7 @@ export default {
       vm.$http.get(url).then((response) => {
         vm.isLoading = false;
         vm.products = response.data.products;
+        vm.pages = response.data.pagination;
       });
     },
   },
@@ -99,6 +106,7 @@ export default {
   components: {
     EditModal,
     DelModal,
+    Pagination,
   },
 };
 </script>

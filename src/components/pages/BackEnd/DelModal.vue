@@ -52,11 +52,11 @@ export default {
         if (response.data.success) {
           vm.emitGetProducts();
           $('#delProductModal').modal('hide');
+          vm.$bus.$emit('alert', '刪除完成', 'success');
         } else {
-          // eslint-disable-next-line
-          console.log('刪除失敗')
           vm.emitGetProducts();
           $('#delProductModal').modal('hide');
+          vm.$bus.$emit('alert', '上傳失敗，請稍後在試', 'danger');
         }
       });
     },
