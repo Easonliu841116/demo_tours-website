@@ -70,7 +70,7 @@ export default {
 .message-alert {
   position: fixed;
   max-width: 50%;
-  top: 3.5vw;
+  top: 4vh;
   right: 3vw;
   z-index: 1100;
 }

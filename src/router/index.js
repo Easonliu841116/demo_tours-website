@@ -4,6 +4,7 @@ import Temp from '@/components/Temp';
 import Register from '@/components/pages/Register';
 import Dashboard from '@/components/Dashboard';
 import Products from '@/components/pages/BackEnd/Products';
+import OrderList from '@/components/pages/BackEnd/OrderList';
 
 Vue.use(Router);
 
@@ -33,6 +34,12 @@ export default new Router({
           path: 'products',
           name: 'Products',
           component: Products,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'orderlist',
+          name: 'OrderList',
+          component: OrderList,
           meta: { requiresAuth: true },
         },
       ],
