@@ -1,18 +1,17 @@
 <template>
   <div>
-    <!-- Loading -->
     <loading :active.sync="isLoading"></loading>
     <div class="text-right mt-4">
       <button class="btn btn-primary" @click.prevent="showEditModal(true)"
-      >建立新的產品</button>
+      >建立商品</button>
     </div>
     <table class="table mt-4">
       <thead>
         <tr>
           <th width="15%">分類</th>
-          <th>產品名稱</th>
-          <th width="10%">原價</th>
-          <th width="10%">售價</th>
+          <th>商品名稱</th>
+          <th width="12.5%">原價</th>
+          <th width="12.5%">售價</th>
           <th width="10%">是否啟用</th>
           <th width="10%">編輯</th>
           <th width="10%">刪除</th>
@@ -39,24 +38,24 @@
       </tbody>
     </table>
     <!-- EditModal -->
-    <EditModal
+    <EditProductModal
     @emitGetProducts="getProducts"
     :tempProductData="tempProducts"
     :isNewData="isNew"/>
     <!-- DelModal -->
-    <DelModal
+    <DelProductModal
     :tempProductData="tempProducts"
     @emitGetProducts="getProducts"/>
     <!-- Pagination -->
     <Pagination
-    @emitGetProduct="getProducts"
+    @emitGetPage="getProducts"
     :pageData="pages"/>
   </div>
 </template>
 <script>
 import $ from 'jquery';
-import EditModal from './EditModal';
-import DelModal from './DelModal';
+import EditProductModal from './EditProductModal';
+import DelProductModal from './DelProductModal';
 import Pagination from './Pagination';
 
 export default {
@@ -104,8 +103,8 @@ export default {
     this.getProducts();
   },
   components: {
-    EditModal,
-    DelModal,
+    EditProductModal,
+    DelProductModal,
     Pagination,
   },
 };

@@ -1,34 +1,37 @@
 <template>
   <div>
-    <form class="form-signin" @submit.prevent="signIn">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input
-        type="email"
-        id="inputEmail"
-        class="form-control"
-        placeholder="Email address"
-        v-model="user.username"
-        required
-        autofocus
-      >
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="inputPassword"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      >
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
+    <loading :active.sync="isLoading"></loading>
+    <div class="d-flex justify-content-center align-items-center custom-vh-100 custom-vw-100">
+      <form class="form-signin" @submit.prevent="signIn">
+        <h1 class="h3 mb-3 font-weight-normal">登入</h1>
+        <label for="inputEmail" class="sr-only">請輸入Email</label>
+        <input
+          type="email"
+          id="inputEmail"
+          class="form-control"
+          placeholder="請輸入Email"
+          v-model="user.username"
+          required
+          autofocus
+        >
+        <label for="inputPassword" class="sr-only">請輸入密碼</label>
+        <input
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          placeholder="請輸入密碼"
+          v-model="user.password"
+          required
+        >
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> 記住我
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -54,17 +57,21 @@ export default {
         username: '',
         password: '',
       },
+      isLoading: false,
     };
   },
   methods: {
     signIn() {
       const vm = this;
       const url = `${process.env.APIPATH}/admin/signin`;
+      vm.isLoading = true;
       vm.$http.post(url, vm.user).then((response) => {
         // eslint-disable-next-line
         console.log(response);
         if (response.data.success) {
-          vm.$router.push('/admin/products');
+          setTimeout(() => {
+            vm.$router.push('/admin/products');
+          }, 500);
         } else {
           vm.$bus.$emit('alert', response.data.message, 'danger');
         }
@@ -73,3 +80,11 @@ export default {
   },
 };
 </script>
+<style>
+.custom-vh-100{
+  height: 100vh;
+}
+.custom-vw-100{
+  width: 100vw;
+}
+</style>

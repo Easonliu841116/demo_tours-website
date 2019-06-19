@@ -11,11 +11,11 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content border-0">
           <div class="modal-header bg-dark text-white">
-            <h5 class="modal-title" id="exampleModalLabel">
-              <span>新增產品</span>
+            <h5 class="modal-title text-white" id="exampleModalLabel">
+              <span>新增 / 修改商品</span>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true" class="text-white">&times;</span>
             </button>
           </div>
           <div class="modal-body">
@@ -73,14 +73,14 @@
                 </div>
                 <hr>
                 <div class="form-group">
-                  <label for="description">產品描述</label>
+                  <label for="description">商品描述</label>
                   <textarea type="text" class="form-control" id="description"
-                   placeholder="請輸入產品描述" v-model="tempProductData.description"></textarea>
+                   placeholder="請輸入商品描述" v-model="tempProductData.description"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="content">說明內容</label>
                   <textarea type="text" class="form-control" id="content"
-                   placeholder="請輸入產品說明內容" v-model="tempProductData.content"></textarea>
+                   placeholder="請輸入商品說明內容" v-model="tempProductData.content"></textarea>
                 </div>
                 <div class="form-group">
                   <div class="form-check">

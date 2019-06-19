@@ -4,16 +4,16 @@
       <ul class="pagination">
         <li class="page-item" :class="{'disabled' : !pageData.has_pre}">
           <a class="page-link" href="#" aria-label="Previous"
-          @click.prevent="emitGetProduct(pageData.current_page - 1)">
+          @click.prevent="emitGetPage(pageData.current_page - 1)">
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
         <li class="page-item" v-for="(page,key) in pageData.total_pages" :key="key">
-          <a class="page-link" href="#" @click.prevent="emitGetProduct(page)">{{page}}</a>
+          <a class="page-link" href="#" @click.prevent="emitGetPage(page)">{{page}}</a>
         </li>
         <li class="page-item" :class="{'disabled' : !pageData.has_next}">
           <a class="page-link" href="#" aria-label="Next"
-          @click.prevent="emitGetProduct(pageData.current_page + 1)">
+          @click.prevent="emitGetPage(pageData.current_page + 1)">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
@@ -32,8 +32,8 @@ export default {
     },
   },
   methods: {
-    emitGetProduct(page) {
-      this.$emit('emitGetProduct', page);
+    emitGetPage(page) {
+      this.$emit('emitGetPage', page);
     },
   },
 };

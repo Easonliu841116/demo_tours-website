@@ -32,7 +32,7 @@
           <td>{{item.total | currencyFilter}}</td>
           <td>
             <strong v-if="item.is_paid" class="text-success">已付款</strong>
-            <span v-else class="text-muted">尚未起用</span>
+            <b v-else class="text-muted">尚未啟用</b>
           </td>
         </tr>
       </tbody>
@@ -64,8 +64,6 @@ export default {
         vm.isLoading = false;
         vm.orders = response.data.orders;
         vm.pages = response.data.pagination;
-        // eslint-disable-next-line
-        console.log(response.data);
       });
     },
     sortOrderByPaid() {

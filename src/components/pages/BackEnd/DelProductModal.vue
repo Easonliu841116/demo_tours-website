@@ -10,12 +10,12 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title" id="DelModalLable">
+          <div class="modal-header bg-danger">
+            <h5 class="modal-title text-white" id="DelModalLable">
               <span>刪除產品</span>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true" class="text-white">&times;</span>
             </button>
           </div>
           <div class="modal-body">
