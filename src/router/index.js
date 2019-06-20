@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Temp from '@/components/Temp';
+import Index from '@/components/Index';
 import Register from '@/components/pages/Register';
 import Dashboard from '@/components/Dashboard';
 import Products from '@/components/pages/BackEnd/Products';
@@ -17,8 +17,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Temp',
-      component: Temp,
+      name: 'Index',
+      component: Index,
     },
     {
       path: '/register',

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <loading :active.sync="isLoading"></loading>
     <div class="d-flex justify-content-center align-items-center custom-vh-100 custom-vw-100">
       <form class="form-signin" @submit.prevent="signIn">
         <h1 class="h3 mb-3 font-weight-normal">登入</h1>
@@ -57,7 +56,6 @@ export default {
         username: '',
         password: '',
       },
-      isLoading: false,
     };
   },
   methods: {
