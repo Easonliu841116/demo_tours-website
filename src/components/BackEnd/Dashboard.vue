@@ -12,13 +12,9 @@
   </div>
 </template>
 
-<style lang="scss">
-@import '.././assets/sass/BackEnd/Dashboard';
-</style>
-
 <script>
-import Navbar from './pages/BackEnd/Navbar';
-import Sidebar from './pages/BackEnd/Sidebar';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 export default {
   components: {
@@ -27,3 +23,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import '../../assets/scss/BackEnd/Dashboard';
+</style>

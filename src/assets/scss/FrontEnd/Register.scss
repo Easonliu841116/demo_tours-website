@@ -1,0 +1,75 @@
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.bg-image{
+  background: url("../../assets/images/bg-register.jpg") center center / cover no-repeat;
+}
+
+.c-vh-100 {
+  height: 100vh;
+}
+
+.c-vw-100 {
+  width: 100vw;
+}
+
+.c-fixed-top{
+  position: fixed;
+  top: 5vh;
+  left: 3vw;
+  &:hover{
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    &:active {
+      color: #007bff !important;
+    }
+  }
+}
+
+.c-device-error{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 0, 100, 0.65);
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}

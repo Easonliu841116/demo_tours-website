@@ -52,6 +52,7 @@
     :pageData="pages"/>
   </div>
 </template>
+
 <script>
 import $ from 'jquery';
 import EditProductModal from './EditProductModal';

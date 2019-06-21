@@ -32,6 +32,7 @@
     </nav>
   </div>
 </template>
+
 <style scoped>
   .text-hover:hover{
     color: #007bff;

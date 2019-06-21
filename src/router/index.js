@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Index from '@/components/Index';
-import Register from '@/components/pages/Register';
-import Dashboard from '@/components/Dashboard';
-import Products from '@/components/pages/BackEnd/Products';
-import OrderList from '@/components/pages/BackEnd/OrderList';
-import Coupon from '@/components/pages/BackEnd/Coupon';
+import Index from '@/components/FrontEnd/Index';
+import Register from '@/components/FrontEnd/Register';
+import Dashboard from '@/components/BackEnd/Dashboard';
+import Products from '@/components/BackEnd/Products';
+import OrderList from '@/components/BackEnd/OrderList';
+import Coupon from '@/components/BackEnd/Coupon';
 
 Vue.use(Router);
 
