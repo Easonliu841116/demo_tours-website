@@ -57,7 +57,7 @@
 import $ from 'jquery';
 import EditProductModal from './EditProductModal';
 import DelProductModal from './DelProductModal';
-import Pagination from './Pagination';
+import Pagination from '../Pagination';
 
 export default {
   data() {

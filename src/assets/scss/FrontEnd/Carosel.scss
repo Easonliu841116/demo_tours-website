@@ -1,0 +1,50 @@
+.c-carosel {
+  width: 100vw;
+  height: 100vh;
+}
+
+.c-carosel-01 {
+  background: url("../../assets/images/bg-carosel01.jpg") center center / cover no-repeat;
+}
+
+.c-carosel-02 {
+  background: url("../../assets/images/bg-carosel02.jpg") center center / cover no-repeat;
+}
+
+.c-carosel-03 {
+  background: url("../../assets/images/bg-carosel03.jpg") center center / cover no-repeat;
+}
+
+.c-carosel-slogan {
+  color: #fff;
+  font-size: 5rem;
+  position: absolute;
+  z-index: 100;
+  top: 40%;
+  left: 15%;
+  transform: translate(-15%, -40%);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.c-carosel-description{
+  color: #fff;
+  font-size: 2rem;
+  position: absolute;
+  z-index: 100;
+  top: 60%;
+  left: 15%;
+  transform: translate(-15%, -60%);
+  background-color: rgba(0,0,0,0.4);
+}
+
+@media (max-width: 992px) {
+  .c-carosel-slogan{
+    font-size: 3rem;
+    top: 50%;
+    left: 15%;
+    transform: translate(-15%, -50%);
+  }
+  .c-carosel-description{
+    font-size: 1rem;
+  }
+}

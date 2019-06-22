@@ -1,11 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Index from '@/components/FrontEnd/Index';
-import Register from '@/components/FrontEnd/Register';
 import Dashboard from '@/components/BackEnd/Dashboard';
 import Products from '@/components/BackEnd/Products';
 import OrderList from '@/components/BackEnd/OrderList';
 import Coupon from '@/components/BackEnd/Coupon';
+import Index from '@/components/FrontEnd/Index';
+import Register from '@/components/FrontEnd/Register';
+import ProductList from '@/components/FrontEnd/Products';
+import Europe from '@/components/FrontEnd/pages/Europe';
 
 Vue.use(Router);
 
@@ -19,6 +21,18 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index,
+    },
+    {
+      path: '/productlist',
+      name: 'ProductList',
+      component: ProductList,
+      children: [
+        {
+          path: 'europe',
+          name: 'Europe',
+          component: Europe,
+        },
+      ],
     },
     {
       path: '/register',

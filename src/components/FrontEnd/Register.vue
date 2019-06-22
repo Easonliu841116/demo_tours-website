@@ -71,8 +71,6 @@ export default {
       const url = `${process.env.APIPATH}/admin/signin`;
       vm.isLoading = true;
       vm.$http.post(url, vm.user).then((response) => {
-        // eslint-disable-next-line
-        console.log(response);
         if (window.screen.width < 992) {
           vm.isDeviceError = true;
           vm.isLoading = false;

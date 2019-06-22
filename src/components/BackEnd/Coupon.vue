@@ -130,7 +130,7 @@
 </template>
 <script>
 import $ from 'jquery';
-import Pagination from './Pagination';
+import Pagination from '../Pagination';
 
 export default {
   data() {
