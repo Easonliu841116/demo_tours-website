@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-fluid d-flex justify-content-center my-5">
+    <div class="container-fluid d-flex justify-content-center my-4">
       <div class="list-group list-group-horizontal-lg w-75 d-flex justify-content-center">
          <a href="/#/productlist/europe" class="d-flex h1 nav-link text-white font-weight-bolder
          list-group-item border-0 mx-3 my-2 rounded c-category c-category-01

@@ -1,0 +1,25 @@
+.c-img-width{
+    width: 100% !important;
+}
+
+.c-card-bg{
+    background: rgb(245, 245, 245);
+}
+
+.c-text-through{
+    text-decoration: line-through;
+}
+
+.c-m-0{
+    margin: 0 !important;
+}
+
+.card-columns{
+    column-count: 3;
+}
+
+@media (max-width: 992px) {
+    .card-columns {
+        column-count: 1;
+    }
+}

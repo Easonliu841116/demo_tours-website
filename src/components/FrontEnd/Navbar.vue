@@ -1,12 +1,13 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light transparent fixed-top">
+    <nav id="navbar" class="navbar navbar-expand-lg transparent fixed-top">
       <div class="nav-item">
-        <a class="nav-link text-white h1 font-weight-bolder rounded ml-2" href="/#/">伊森旅遊</a>
+        <a class="nav-link text-white h3 font-weight-bolder rounded ml-2" href="#"
+        @click.prevent="toIndex">伊森旅遊</a>
       </div>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler h3"
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -19,13 +20,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto ml-3">
           <li class="nav-item py-2 ml-2">
-            <a class="nav-link text-white ml-2 h5 rounded" href="/#/productlist">
+            <a class="nav-link text-white ml-2 h6 rounded" href="#"
+            @click.prevent="toProductlist">
               <i class="fas fa-plane"></i>
               <span class="font-weight-bolder">&nbsp;行程一覽</span>
             </a>
           </li>
           <li class="nav-item py-2 ml-2">
-            <a class="nav-link text-white ml-2 h5 rounded" href="/#/customorder">
+            <a class="nav-link text-white ml-2 h6 rounded" href="/#/customorder">
               <i class="fas fa-shopping-cart"></i>
               <span class="font-weight-bolder">&nbsp; 購物車</span>
             </a>
@@ -33,11 +35,11 @@
         </ul>
         <div class="nav-item py-2 ml-2 my-lg-0">
           <a
-            class="nav-link text-white font-weight-bolder h5 rounded ml-2"
+            class="nav-link text-white font-weight-bolder h6 rounded ml-2"
             href="#"
             tabindex="-1"
             aria-disabled="true"
-            @click.prevent="register"
+            @click.prevent="toRegister"
           >
             <i class="fas fa-cog"></i>
             <span class="font-weight-bolder">&nbsp;登入後台</span>
@@ -58,17 +60,34 @@ export default {
     };
   },
   methods: {
-    register() {
+    toIndex() {
+      const vm = this;
+      vm.isLoading = true;
+      setTimeout(() => {
+        window.location.href = '/#/';
+        vm.isLoading = false;
+      }, 500);
+    },
+    toRegister() {
       const vm = this;
       vm.isLoading = true;
       setTimeout(() => {
         window.location.href = '/#/register';
-      }, 750);
+        vm.isLoading = false;
+      }, 500);
+    },
+    toProductlist() {
+      const vm = this;
+      vm.isLoading = true;
+      setTimeout(() => {
+        window.location.href = '/#/productlist';
+        vm.isLoading = false;
+      }, 500);
     },
   },
   created() {
     $(window).scroll(() => {
-      if ($(document).scrollTop() > 650) {
+      if ($(document).scrollTop() > 1) {
         $('#navbar').removeClass('transparent');
         $('#navbar').addClass('bg-dark');
       } else {
