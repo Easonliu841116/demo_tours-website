@@ -1,21 +1,21 @@
-.c-category{
-    width: 100%;
-    height: 175px;
-    transition: all 0.15s;
-    &:hover{
-        transform: scale(1.05);
-        background-color: rgba(0,0,0,0.3)
-    }
+.c-category {
+  width: 100%;
+  height: 175px;
+  transition: all 0.15s;
+  &:hover {
+    transform: scale(1.05);
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }
 
-.c-category-01{
-    background: url("../../assets/images/bg-category01.jpg") center center / cover no-repeat;
+.c-category-01 {
+  background: url("../../assets/images/category/bg-category01.jpg") center center / cover no-repeat;
 }
 
-.c-category-02{
-    background: url("../../assets/images/bg-category02.jpg") center center / cover no-repeat;
+.c-category-02 {
+  background: url("../../assets/images/category/bg-category02.jpg") center center / cover no-repeat;
 }
 
-.c-category-03{
-    background: url("../../assets/images/bg-category03.jpg") center center / cover no-repeat;
+.c-category-03 {
+  background: url("../../assets/images/category/bg-category03.jpg") center center / cover no-repeat;
 }

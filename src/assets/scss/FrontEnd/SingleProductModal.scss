@@ -1,0 +1,14 @@
+.c-text-through {
+  text-decoration: line-through;
+}
+.c-text-small {
+  font-size: 0.9rem;
+}
+
+.c-zoom-image {
+  transition: all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: crosshair;
+  &:hover {
+    transform: scale(1.5);
+  }
+}

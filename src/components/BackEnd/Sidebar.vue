@@ -33,8 +33,9 @@
   </div>
 </template>
 
-<style scoped>
-  .text-hover:hover{
-    color: #007bff;
-  }
+<style lang="scss" scoped>
+.text-hover:hover{
+  color: #007bff;
+}
+
 </style>

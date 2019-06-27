@@ -21,7 +21,7 @@
         <ul class="navbar-nav mr-auto ml-3">
           <li class="nav-item py-2 ml-2">
             <a class="nav-link text-white ml-2 h6 rounded" href="#"
-            @click.prevent="toProductlist">
+            @click.prevent="toTours">
               <i class="fas fa-plane"></i>
               <span class="font-weight-bolder">&nbsp;行程一覽</span>
             </a>
@@ -66,7 +66,7 @@ export default {
       setTimeout(() => {
         window.location.href = '/#/';
         vm.isLoading = false;
-      }, 500);
+      }, 750);
     },
     toRegister() {
       const vm = this;
@@ -74,15 +74,15 @@ export default {
       setTimeout(() => {
         window.location.href = '/#/register';
         vm.isLoading = false;
-      }, 500);
+      }, 750);
     },
-    toProductlist() {
+    toTours() {
       const vm = this;
       vm.isLoading = true;
       setTimeout(() => {
-        window.location.href = '/#/productlist';
+        window.location.href = '/#/tours';
         vm.isLoading = false;
-      }, 500);
+      }, 750);
     },
   },
   created() {
@@ -101,4 +101,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/scss/FrontEnd/Navbar";
+
 </style>

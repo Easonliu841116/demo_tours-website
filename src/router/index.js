@@ -6,7 +6,7 @@ import OrderList from '@/components/BackEnd/OrderList';
 import Coupon from '@/components/BackEnd/Coupon';
 import Index from '@/components/FrontEnd/Index';
 import Register from '@/components/FrontEnd/Register';
-import ProductList from '@/components/FrontEnd/Products';
+import Tours from '@/components/FrontEnd/Tours';
 
 Vue.use(Router);
 
@@ -22,9 +22,9 @@ export default new Router({
       component: Index,
     },
     {
-      path: '/productlist',
-      name: 'ProductList',
-      component: ProductList,
+      path: '/tours',
+      name: 'Tours',
+      component: Tours,
     },
     {
       path: '/register',

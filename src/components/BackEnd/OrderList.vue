@@ -70,6 +70,7 @@ export default {
       const vm = this;
       vm.isSort = !vm.isSort;
       if (vm.orders.length) {
+        // 判斷是否已付款，藉由點選來做排序
         if (vm.isSort) {
           vm.orders.sort((a, b) => {
             const aIsPaid = a.is_paid ? 1 : -1;
@@ -95,8 +96,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .isSort {
   transform: rotate(180deg);
 }
+
 </style>

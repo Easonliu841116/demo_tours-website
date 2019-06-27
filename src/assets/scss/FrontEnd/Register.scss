@@ -33,8 +33,8 @@
   border-top-right-radius: 0;
 }
 
-.bg-image{
-  background: url("../../assets/images/bg-register01.jpg") center center / cover no-repeat;
+.bg-image {
+  background: url("../../assets/images/register/bg-register01.jpg") center center / cover no-repeat;
 }
 
 .c-vh-100 {
@@ -45,11 +45,11 @@
   width: 100vw;
 }
 
-.c-fixed-top{
+.c-fixed-top {
   position: fixed;
   top: 5vh;
   left: 3vw;
-  &:hover{
+  &:hover {
     &:hover {
       background-color: rgba(255, 255, 255, 0.25);
     }
@@ -60,7 +60,7 @@
   }
 }
 
-.c-device-error{
+.c-device-error {
   position: fixed;
   top: 50%;
   left: 50%;

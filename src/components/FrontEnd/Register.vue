@@ -2,14 +2,14 @@
   <div>
     <loading :active.sync="isLoading"></loading>
     <a class="go-back transparent d-block nav-link transparent c-fixed-top rounded
-    text-white font-weight-bolder h6 " @click.prevent="goBack" href="#">
+      text-white font-weight-bolder h6 " @click.prevent="goBack" href="#">
       <i class="fas fa-arrow-left"></i>
       <span>回上一頁</span>
     </a>
     <div class="d-flex justify-content-center align-items-center
     c-vh-100 c-vw-100 bg-image">
       <form class="form-signin bg-light shadow rounded py-4"
-      v-if="!isDeviceError" @submit.prevent="signIn">
+        v-if="!isDeviceError" @submit.prevent="signIn">
           <h1 class="h5 mb-3 font-weight-bold">請先登入</h1>
           <label for="inputEmail" class="sr-only">請輸入Email</label>
           <input

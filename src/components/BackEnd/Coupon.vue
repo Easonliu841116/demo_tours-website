@@ -6,6 +6,7 @@
         建立優惠券
       </button>
     </div>
+    <!-- CouponContent -->
     <table class="table mt-4">
       <thead>
         <tr>
@@ -40,7 +41,7 @@
       </tbody>
     </table>
     <!-- EditCouponModal -->
-      <div class="modal fade" id="couponModal" tabindex="-1" role="dialog"
+    <div class="modal fade" id="couponModal" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content border-0">

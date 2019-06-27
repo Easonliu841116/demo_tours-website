@@ -39,18 +39,11 @@
 }
 
 @media (max-width: 992px) {
-  .c-fullscreen-bg {
-    background: url("../../assets/images/bg-register02.jpg") center center / cover no-repeat;
-  }
-
-  .c-fullscreen-bg__video {
-    display: none;
-  }
-
   .c-slogan {
-    font-size: 3.75rem;
+    font-size: 3rem;
     top: 35%;
     left: 50%;
+    white-space: nowrap;
     transform: translate(-50%, -35%);
   }
 
