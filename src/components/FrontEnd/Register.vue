@@ -88,7 +88,7 @@ export default {
       const vm = this;
       vm.isLoading = true;
       setTimeout(() => {
-        window.location.href = '/#/';
+        window.location.href = './#/';
       }, 750);
     },
   },

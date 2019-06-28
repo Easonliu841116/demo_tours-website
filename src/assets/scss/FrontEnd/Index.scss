@@ -39,6 +39,14 @@
 }
 
 @media (max-width: 992px) {
+  .c-fullscreen-bg {
+    background: url("../../assets/images/index/bg-index-alt.jpg") center center / cover no-repeat;
+  }
+
+  .c-fullscreen-bg__video {
+    display: none;
+  }
+  
   .c-slogan {
     font-size: 3rem;
     top: 35%;

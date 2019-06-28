@@ -27,7 +27,8 @@
             </a>
           </li>
           <li class="nav-item py-2 ml-2">
-            <a class="nav-link text-white ml-2 h6 rounded" href="/#/customorder">
+            <a class="nav-link text-white ml-2 h6 rounded disabled text-muted"
+            href="/#/customorder">
               <i class="fas fa-shopping-cart"></i>
               <span class="font-weight-bolder">&nbsp; 購物車</span>
             </a>
@@ -64,7 +65,7 @@ export default {
       const vm = this;
       vm.isLoading = true;
       setTimeout(() => {
-        window.location.href = '/#/';
+        window.location.href = './#/';
         vm.isLoading = false;
       }, 750);
     },
@@ -72,7 +73,7 @@ export default {
       const vm = this;
       vm.isLoading = true;
       setTimeout(() => {
-        window.location.href = '/#/register';
+        window.location.href = './#/register';
         vm.isLoading = false;
       }, 750);
     },
@@ -80,14 +81,14 @@ export default {
       const vm = this;
       vm.isLoading = true;
       setTimeout(() => {
-        window.location.href = '/#/tours';
+        window.location.href = './#/tours';
         vm.isLoading = false;
       }, 750);
     },
   },
   created() {
     $(window).scroll(() => {
-      if ($(document).scrollTop() > 1) {
+      if ($(document).scrollTop() > 50) {
         $('#navbar').removeClass('transparent');
         $('#navbar').addClass('bg-dark');
       } else {

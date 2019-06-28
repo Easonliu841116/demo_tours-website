@@ -30,7 +30,7 @@ export default {
       const vm = this;
       vm.isLoading = true;
       setTimeout(() => {
-        window.location.href = '/#/tours';
+        window.location.href = './#/tours';
         vm.isLoading = false;
       }, 750);
     },
