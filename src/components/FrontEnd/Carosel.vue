@@ -9,15 +9,15 @@
       <div class="carousel-inner">
         <div class="carousel-item c-carosel-01 c-carosel position-relative active">
           <h4 class="font-weight-bolder c-carosel-slogan">京都5天4夜</h4>
-          <p class="py-1 c-carosel-description">細細探索這座古都，NT$ 14,999元起!</p>
+          <p class="py-1 c-carosel-description">細細探索這座古都，NT$ 14,999 元起!</p>
         </div>
         <div class="carousel-item c-carosel-02 c-carosel position-relative">
           <h4 class="font-weight-bolder c-carosel-slogan">東京8天7夜</h4>
-          <p class="py-1 c-carosel-description">一探屬於你的東京之旅，NT$ 24,999元起!</p>
+          <p class="py-1 c-carosel-description">一探屬於你的東京之旅，NT$ 24,999 元起!</p>
         </div>
         <div class="carousel-item c-carosel-03 c-carosel position-relative">
           <h4 class="font-weight-bolder c-carosel-slogan">大阪10天9夜</h4>
-          <p class="py-1 c-carosel-description">慶祝伊森旅遊滿3周年，NT$ 19,999元起</p>
+          <p class="py-1 c-carosel-description">慶祝伊森旅遊滿3周年，NT$ 19,999 元起!</p>
         </div>
       </div>
       <a
@@ -39,18 +39,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import $ from 'jquery';
-
-export default {
-  created() {
-    $('#banner-carosel').carousel({
-      interval: 3000,
-    });
-  },
-};
-</script>
 
 <style lang="scss" scoped>
 @import "../../assets/scss/FrontEnd/Carosel";

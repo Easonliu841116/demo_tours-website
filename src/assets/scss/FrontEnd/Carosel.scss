@@ -23,7 +23,7 @@
   top: 40%;
   left: 15%;
   transform: translate(-15%, -40%);
-  background-color: rgba(0, 0, 0, 0.4);
+  // background-color: rgba(0, 0, 0, 0.4);
 }
 
 .c-carosel-description {
@@ -34,7 +34,7 @@
   top: 60%;
   left: 15%;
   transform: translate(-15%, -60%);
-  background-color: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(transparent 50%, rgba(0,0,0,0.6) 50%)
 }
 
 @media (max-width: 992px) {

@@ -16,7 +16,7 @@
             class="form-control rounded-left" v-model="searchData.productCategory">
               <option value="all" selected>所有</option>
               <option
-              v-for="(item, key) in stateFilter" :key="key"
+              v-for="(item, key) in categoryFilter" :key="key"
               :value="item">{{item}}</option>
             </select>
             </div>
@@ -80,6 +80,8 @@
             </div>
           </div>
         </keep-alive>
+        <!-- Pagination -->
+        <Pagination :pageData="pages" @emitGetPage="getTours"/>
       </div>
       <!-- proudct-modal -->
       <SingleProductModal
@@ -98,6 +100,7 @@ import $ from 'jquery';
 import Navbar from './Navbar';
 import Carosel from './Carosel';
 import SingleProductModal from './SingleProductModal';
+import Pagination from '../Pagination';
 
 export default {
   data() {
@@ -106,6 +109,7 @@ export default {
       product: {},
       isLoading: false,
       search: '',
+      pages: {},
       status: {
         loadingItem: '',
       },
@@ -116,7 +120,7 @@ export default {
     };
   },
   methods: {
-    getProducts(page = 1) {
+    getTours(page = 1) {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${
         process.env.CUSTOMPATH
@@ -125,6 +129,7 @@ export default {
       vm.$http.get(api).then((response) => {
         vm.products = response.data.products;
         vm.isLoading = false;
+        vm.pages = response.data.pagination;
       });
     },
     getSingleProduct(id) {
@@ -140,50 +145,62 @@ export default {
       });
     },
     recommend(keyword) {
+      // 自動填入搜尋欄
       const vm = this;
       vm.searchData.productContent = keyword.title;
       vm.searchData.productCategory = keyword.category;
     },
     clearSearchInput() {
       const vm = this;
+      // 清空搜尋欄
       vm.searchData.productContent = '';
       vm.searchData.productCategory = 'all';
     },
   },
   created() {
-    this.getProducts();
+    this.getTours();
   },
   components: {
     Navbar,
     Carosel,
     SingleProductModal,
+    Pagination,
   },
   computed: {
-    stateFilter() {
+    // 篩選分類
+    categoryFilter() {
       const vm = this;
       const cacheCategory = [];
       let filteredCategory = [];
+      // 過濾重複出現的類別
       vm.products.forEach(el => cacheCategory.push(el.category));
       filteredCategory = cacheCategory.filter((el, id, ary) => ary.indexOf(el) === id);
       return filteredCategory;
     },
+    // 篩選與select相同分類的產品
     productCategoryFilter() {
       const vm = this;
+      // 如果分類為所有，返回原來的值
       if (vm.searchData.productCategory === 'all') {
         return vm.products;
       }
+      // 返回與option相同的分類
       return vm.products.filter(item => item.category === vm.searchData.productCategory);
     },
+    // 篩選與input/text內部分符合關鍵字的產品
     productContentFilter() {
       const vm = this;
+      // 如果input/text內有字，即過濾產品
       if (vm.searchData.productContent) {
         return vm.productCategoryFilter.filter((el) => {
           const title = el.title.toLowerCase().trim();
           const content = el.description.toLowerCase().trim();
           const keyword = vm.searchData.productContent;
+          // 同時搜尋title與content內的文字
           return title.indexOf(keyword) !== -1 || content.indexOf(keyword) !== -1;
         });
       }
+      // 若input/text內沒有字，就用select再判斷一次
       return vm.productCategoryFilter;
     },
   },
@@ -191,6 +208,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/scss/FrontEnd/Products";
+@import "../../assets/scss/FrontEnd/Tours";
 
 </style>

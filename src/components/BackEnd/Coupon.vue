@@ -130,6 +130,7 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 import $ from 'jquery';
 import Pagination from '../Pagination';
 
@@ -137,13 +138,7 @@ export default {
   data() {
     return {
       coupons: {},
-      tempCoupon: {
-        title: '',
-        is_enabled: 0,
-        percent: 100,
-        due_date: 0,
-        code: '',
-      },
+      tempCoupon: {},
       due_date: new Date(),
       isNew: false,
       pages: {},
@@ -152,12 +147,14 @@ export default {
   },
   watch: {
     due_date() {
+      //若到期日有改變，就以新的timestamp取代舊的
       const vm = this;
       const timestamp = Math.floor(new Date(vm.due_date) / 1000);
       vm.tempCoupon.due_date = timestamp;
     },
   },
   methods: {
+    // 判斷要新建還是編輯
     openEditCouponModal(judge, item) {
       const vm = this;
       $('#couponModal').modal('show');
@@ -165,7 +162,10 @@ export default {
       if (vm.isNew) {
         vm.tempCoupon = {};
       } else {
+        // 利用es6 assign賦值避免直接更動
         vm.tempCoupon = { ...item };
+        console.log(vm.tempCoupon)
+        //把得到的timestamp以"T"分割轉成ISO格式，並選擇第一項作為賦值目標
         const dateAndTime = new Date(vm.tempCoupon.due_date * 1000).toISOString().split('T');
         vm.due_date = dateAndTime[0];
       }
@@ -183,12 +183,14 @@ export default {
     updateCoupon() {
       const vm = this;
       if (vm.isNew) {
+        // 如果是新建立優惠券，就post表單以建立優惠券
         const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon`;
         this.$http.post(url, { data: vm.tempCoupon }).then(() => {
           $('#couponModal').modal('hide');
           this.getCoupons();
         });
       } else {
+        // 如果是編輯優惠券，就put表單修改優惠券
         const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
         vm.due_date = new Date(vm.tempCoupon.due_date * 1000);
         this.$http.put(url, { data: vm.tempCoupon }).then(() => {
