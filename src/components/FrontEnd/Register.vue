@@ -1,16 +1,12 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <a class="go-back transparent d-block nav-link transparent c-fixed-top rounded
-      text-white font-weight-bolder h6 " @click.prevent="goBack" href="#">
-      <i class="fas fa-arrow-left"></i>
-      <span>回上一頁</span>
-    </a>
+    <Navbar :registerShowJudge = false />
     <div class="d-flex justify-content-center align-items-center
-    c-vh-100 c-vw-100 bg-image">
-      <form class="form-signin bg-light shadow rounded py-4"
+    vw-100 vh-100 bg-image">
+      <form class="form-signin bg-light shadow rounded pt-4 pb-2"
         v-if="!isDeviceError" @submit.prevent="signIn">
-          <h1 class="h5 mb-3 font-weight-bold">請先登入</h1>
+          <h1 class="h5 mb-3 font-weight-bold">後台登入介面</h1>
           <label for="inputEmail" class="sr-only">請輸入Email</label>
           <input
             type="email"
@@ -36,7 +32,9 @@
             </label>
           </div>
           <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
-          <p class=" my-3 text-muted text-center">伊森旅遊&copy; 2019</p>
+          <a class=" my-3 text-center nav-link p-0 font-weight-bold" href="#"
+          @click="goBack">返回上一頁</a>
+          <p class=" text-muted text-center">伊森旅遊&copy; 2019</p>
       </form>
     </div>
     <div v-if="isDeviceError"
@@ -53,6 +51,7 @@
 </template>
 
 <script>
+import Navbar from './Navbar';
 
 export default {
   data() {
@@ -88,9 +87,13 @@ export default {
       const vm = this;
       vm.isLoading = true;
       setTimeout(() => {
-        window.location.href = './#/';
+        window.history.back();
       }, 750);
+      vm.isLoading = false;
     },
+  },
+  components: {
+    Navbar,
   },
 };
 </script>

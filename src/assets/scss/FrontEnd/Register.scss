@@ -37,29 +37,6 @@
   background: url("../../assets/images/register/bg-register01.jpg") center center / cover no-repeat;
 }
 
-.c-vh-100 {
-  height: 100vh;
-}
-
-.c-vw-100 {
-  width: 100vw;
-}
-
-.c-fixed-top {
-  position: fixed;
-  top: 2.5vh;
-  left: 2vw;
-  &:hover {
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.25);
-    }
-
-    &:active {
-      color: #007bff !important;
-    }
-  }
-}
-
 .c-device-error {
   position: fixed;
   top: 50%;

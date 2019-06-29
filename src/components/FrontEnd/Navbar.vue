@@ -27,13 +27,14 @@
             </a>
           </li>
           <li class="nav-item ml-2 py-2">
-            <a class="nav-link text-white h6 rounded mb-0" href="#">
+            <a class="nav-link text-white h6 rounded mb-0" href="#"
+            @click.prevent="toCheckout">
               <i class="fas fa-shopping-cart"></i>
               <span class="font-weight-bold">&nbsp; 購物車</span>
             </a>
           </li>
         </ul>
-        <div class="nav-item ml-2 py-2">
+        <div class="nav-item ml-2 py-2" v-if="registerShowJudge">
           <a
             class="nav-link text-white h6 rounded mb-0"
             href="#"
@@ -54,6 +55,14 @@
 import $ from 'jquery';
 
 export default {
+  props: {
+    registerShowJudge: {
+      type: Boolean,
+      default() {
+        return true;
+      },
+    },
+  },
   data() {
     return {
       isLoading: false,
@@ -81,6 +90,14 @@ export default {
       vm.isLoading = true;
       setTimeout(() => {
         window.location.href = './#/tours';
+        vm.isLoading = false;
+      }, 750);
+    },
+    toCheckout() {
+      const vm = this;
+      vm.isLoading = true;
+      setTimeout(() => {
+        window.location.href = './#/checkout';
         vm.isLoading = false;
       }, 750);
     },

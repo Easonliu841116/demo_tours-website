@@ -7,6 +7,7 @@ import Coupon from '@/components/BackEnd/Coupon';
 import Index from '@/components/FrontEnd/Index';
 import Register from '@/components/FrontEnd/Register';
 import Tours from '@/components/FrontEnd/Tours';
+import CheckOut from '@/components/FrontEnd/CheckOut';
 
 Vue.use(Router);
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/tours',
       name: 'Tours',
       component: Tours,
+    },
+    {
+      path: '/checkout',
+      name: 'CheckOut',
+      component: CheckOut,
     },
     {
       path: '/register',

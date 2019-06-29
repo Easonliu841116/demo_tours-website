@@ -119,7 +119,6 @@ export default {
     };
   },
   methods: {
-    /* eslint-disable */
     getTours(page = 1) {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${
@@ -151,7 +150,6 @@ export default {
       };
       vm.$http.post(url, { data: cart }).then((response) => {
         if (response.data.success) {
-          console.log(response.data)
           vm.getCart();
           $('#productModal').modal('hide');
           vm.$bus.$emit('alert', response.data.message, 'success');
@@ -169,7 +167,6 @@ export default {
       vm.$http.get(api).then((response) => {
         vm.carts = response.data.data;
         vm.isLoading = false;
-        console.log(response.data)
       });
     },
     recommend(keyword) {
