@@ -66,9 +66,9 @@
                     placeholder="請輸入原價" v-model="tempProductData.origin_price">
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="price">特價</label>
+                    <label for="price">售價</label>
                     <input type="number" class="form-control" id="price"
-                    placeholder="請輸入特價(非必填)" v-model="tempProductData.price">
+                    placeholder="請輸入售價" v-model="tempProductData.price">
                   </div>
                 </div>
                 <hr>

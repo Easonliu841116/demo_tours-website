@@ -11,7 +11,7 @@
           <th width="15%">分類</th>
           <th>商品名稱</th>
           <th width="12.5%">原價</th>
-          <th width="12.5%">特價</th>
+          <th width="12.5%">售價</th>
           <th width="10%">是否啟用</th>
           <th width="10%">編輯</th>
           <th width="10%">刪除</th>

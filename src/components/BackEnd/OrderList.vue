@@ -37,7 +37,7 @@
         </tr>
       </tbody>
     </table>
-    <Pagination :pageData="pages" @emitGetProduct="getOrders"></Pagination>
+    <Pagination :pageData="pages" @emitGetPage="getOrders"></Pagination>
   </div>
 </template>
 

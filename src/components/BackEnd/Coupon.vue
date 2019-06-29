@@ -164,7 +164,6 @@ export default {
       } else {
         // 利用es6 assign賦值避免直接更動
         vm.tempCoupon = { ...item };
-        console.log(vm.tempCoupon)
         //把得到的timestamp以"T"分割轉成ISO格式，並選擇第一項作為賦值目標
         const dateAndTime = new Date(vm.tempCoupon.due_date * 1000).toISOString().split('T');
         vm.due_date = dateAndTime[0];

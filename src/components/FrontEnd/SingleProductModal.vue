@@ -24,8 +24,8 @@
               <p class="h6 mb-3 mx-2">{{ productData.content }}</p>
             </blockquote>
             <div class="d-flex justify-content-between align-items-baseline">
-              <div class="ml-2">
-                  售價：
+              <div class="ml-2" v-if="productData.price !== productData.origin_price">
+                  原價：
                   <span class="h3"
                   :class="{'c-text-through':productData.price, 'c-text-small':productData.price}">
                       {{ productData.origin_price| CurrencyFilter }}
@@ -35,12 +35,16 @@
                     ({{productData.unit}})
                   </small>
               </div>
-              <div class="h6 mr-2 text-danger" v-if="productData.price">
-                  特價：
+              <div class="h6 mr-2" v-if="productData.price"
+              :class="{'text-danger':productData.price !== productData.origin_price}">
+                  售價：
                   <span class="h3">
                       {{ productData.price| CurrencyFilter }}
                   </span>
                   元
+                  <span>
+                      ({{ productData.unit }})
+                  </span>
               </div>
               </div>
             <select name class="form-control mt-3"
@@ -57,10 +61,8 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="addToCart(productData.id, productData.num)"
+              @click="emitAddToCart(productData.id, productData.num)"
             >
-              <i class="fas fa-spinner fa-spin"
-              v-if="statusData.loadingItem === productData.id"></i>
               加到購物車
             </button>
           </div>
@@ -78,11 +80,10 @@ export default {
         return {};
       },
     },
-    statusData: {
-      type: Object,
-      default() {
-        return {};
-      },
+  },
+  methods: {
+    emitAddToCart(id, num) {
+      this.$emit('emitAddToCart', id, num);
     },
   },
 };

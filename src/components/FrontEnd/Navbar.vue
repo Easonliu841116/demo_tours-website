@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading"></loading>
     <nav id="navbar" class="navbar navbar-expand-lg transparent fixed-top">
       <div class="nav-item">
-        <a class="nav-link text-white h3 font-weight-bolder rounded ml-2" href="#"
+        <a class="nav-link text-white h3 font-weight-bolder rounded ml-2 mb-0" href="#"
         @click.prevent="toIndex">伊森旅遊</a>
       </div>
       <button
@@ -19,31 +19,30 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto ml-3">
-          <li class="nav-item py-2 ml-2">
-            <a class="nav-link text-white ml-2 h6 rounded" href="#"
+          <li class="nav-item ml-2 py-2">
+            <a class="nav-link text-white h6 rounded mb-0" href="#"
             @click.prevent="toTours">
               <i class="fas fa-plane"></i>
-              <span class="font-weight-bolder">&nbsp;行程一覽</span>
+              <span class="font-weight-bold">&nbsp;行程一覽</span>
             </a>
           </li>
-          <li class="nav-item py-2 ml-2">
-            <a class="nav-link text-white ml-2 h6 rounded disabled text-muted"
-            href="/#/customorder">
+          <li class="nav-item ml-2 py-2">
+            <a class="nav-link text-white h6 rounded mb-0" href="#">
               <i class="fas fa-shopping-cart"></i>
-              <span class="font-weight-bolder">&nbsp; 購物車</span>
+              <span class="font-weight-bold">&nbsp; 購物車</span>
             </a>
           </li>
         </ul>
-        <div class="nav-item py-2 ml-2 my-lg-0">
+        <div class="nav-item ml-2 py-2">
           <a
-            class="nav-link text-white font-weight-bolder h6 rounded ml-2"
+            class="nav-link text-white h6 rounded mb-0"
             href="#"
             tabindex="-1"
             aria-disabled="true"
             @click.prevent="toRegister"
           >
             <i class="fas fa-cog"></i>
-            <span class="font-weight-bolder">&nbsp;登入後台</span>
+            <span class="font-weight-bold">&nbsp;登入後台</span>
           </a>
         </div>
       </div>

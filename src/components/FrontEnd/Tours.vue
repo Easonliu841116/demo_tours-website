@@ -58,16 +58,17 @@
                   <br>
                   <div class="w-100 d-inline-flex justify-content-between align-items-center">
                     <div class="ml-3">
-                      <p class="c-m-0" :class="{'text-muted':product.price}">
-                        售價：
+                      <p class="c-m-0 text-muted"
+                        v-if="product.price !== product.origin_price">
+                        原價：
                         <span
                           :class="{'c-text-through':product.price,
                           'c-text-small':product.price, 'h4':!product.price}"
                         >{{product.origin_price | CurrencyFilter}}</span>
                       </p>
-                      <p class="text-danger" v-if="product.price">
-                        特價：
-                        <span class="h4 text-danger">{{product.price | CurrencyFilter}}</span>
+                      <p :class="{'text-danger':product.price !== product.origin_price}">
+                        售價：
+                        <span class="h4">{{product.price | CurrencyFilter}}</span>
                       </p>
                     </div>
                     <div class="mr-3">
@@ -86,7 +87,7 @@
       <!-- proudct-modal -->
       <SingleProductModal
       :productData="product"
-      :statusData="status"/>
+      @emitAddToCart="addToCart"/>
       <!-- footer -->
       <footer>
         <p class="text-center text-white m-0 py-3 d-block bg-dark">本網站資料所有資料皆來自網路，僅供學術用途。</p>
@@ -110,16 +111,15 @@ export default {
       isLoading: false,
       search: '',
       pages: {},
-      status: {
-        loadingItem: '',
-      },
       searchData: {
         productCategory: 'all',
         productContent: '',
       },
+      carts: {},
     };
   },
   methods: {
+    /* eslint-disable */
     getTours(page = 1) {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${
@@ -137,11 +137,39 @@ export default {
       const api = `${process.env.APIPATH}/api/${
         process.env.CUSTOMPATH
       }/product/${id}`;
-      vm.status.loadingItem = id;
       vm.$http.get(api).then((response) => {
         vm.product = response.data.product;
         $('#productModal').modal('show');
-        vm.status.loadingItem = '';
+      });
+    },
+    addToCart(id, qty = 1) {
+      const vm = this;
+      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+      const cart = {
+        product_id: id,
+        qty,
+      };
+      vm.$http.post(url, { data: cart }).then((response) => {
+        if (response.data.success) {
+          console.log(response.data)
+          vm.getCart();
+          $('#productModal').modal('hide');
+          vm.$bus.$emit('alert', response.data.message, 'success');
+        } else {
+          vm.getCart();
+          $('#productModal').modal('hide');
+          vm.$bus.$emit('alert', response.data.message, 'danger');
+        }
+      });
+    },
+    getCart() {
+      const vm = this;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+      vm.isLoading = true;
+      vm.$http.get(api).then((response) => {
+        vm.carts = response.data.data;
+        vm.isLoading = false;
+        console.log(response.data)
       });
     },
     recommend(keyword) {
