@@ -1,4 +1,5 @@
 .c-wrap-bg {
+  min-height: 100vh;
   width: 100%;
   padding: 15vh 0;
   background: url("../../assets/images/checkout/bg-checkout.jpg") center center / cover no-repeat;
@@ -11,6 +12,10 @@
 
 .c-table-width {
   width: 75%;
+}
+
+.c-form-width{
+  width: 60%;
 }
 
 @media (max-width: 992px) {
@@ -27,6 +32,10 @@
   }
 
   .c-table-width {
+    width: 100%;
+  }
+
+  .c-form-width{
     width: 100%;
   }
 }

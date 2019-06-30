@@ -19,7 +19,8 @@
       <tbody>
         <tr v-for="(item, key) in orders" :key="key">
           <td>{{item.create_at | DateFilter}}</td>
-          <td>{{item.user.email}}</td>
+          <td></td>
+          <!-- <td>{{item.user.email}}</td> -->
           <td>
             <ul class="list-unstyled" v-for="(el, key) in item.products" :key="key">
               <li>
@@ -32,7 +33,7 @@
           <td>{{item.total | currencyFilter}}</td>
           <td>
             <strong v-if="item.is_paid" class="text-success">已付款</strong>
-            <b v-else class="text-muted">尚未啟用</b>
+            <b v-else class="text-muted">尚未付款</b>
           </td>
         </tr>
       </tbody>
@@ -47,10 +48,10 @@ import Pagination from '../Pagination';
 export default {
   data() {
     return {
-      orders: [],
       isLoading: false,
       pages: {},
       isSort: false,
+      orders: {},
     };
   },
   methods: {
