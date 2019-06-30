@@ -3,7 +3,7 @@
     <div class="bg-light">
       <loading :active.sync="isLoading"></loading>
       <!-- Navbar -->
-      <Navbar/>
+      <Navbar ref="getCart" :navItemShowJudge = "'tours'" />
       <!-- Carosel -->
       <Carosel/>
       <!-- Main -->
@@ -87,7 +87,8 @@
       <!-- proudct-modal -->
       <SingleProductModal
       :productData="product"
-      @emitAddToCart="addToCart"/>
+      @emitAddToCart="addToCart"
+      :cartData="carts"/>
       <!-- footer -->
       <footer>
         <p class="text-center text-white m-0 py-3 d-block bg-dark">本網站資料所有資料皆來自網路，僅供學術用途。</p>
@@ -158,6 +159,7 @@ export default {
           $('#productModal').modal('hide');
           vm.$bus.$emit('alert', response.data.message, 'danger');
         }
+        vm.$refs.getCart.getCart();
       });
     },
     getCart() {
@@ -184,6 +186,7 @@ export default {
   },
   created() {
     this.getTours();
+    this.getCart();
   },
   components: {
     Navbar,

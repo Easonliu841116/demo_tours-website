@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading"></loading>
     <Navbar/>
     <div class="c-fullscreen-bg">
-      <h2 class="c-slogan c-font-weight-bolder">
+      <h2 class="c-slogan c-font-weight-bolder font-italic">
           享受，
         <br>
           每個精彩時刻。

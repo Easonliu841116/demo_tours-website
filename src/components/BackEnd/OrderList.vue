@@ -20,7 +20,7 @@
         <tr v-for="(item, key) in orders" :key="key">
           <td>{{item.create_at | DateFilter}}</td>
           <td></td>
-          <!-- <td>{{item.user.email}}</td> -->
+          <td>{{item.user.email}}</td>
           <td>
             <ul class="list-unstyled" v-for="(el, key) in item.products" :key="key">
               <li>
@@ -62,10 +62,10 @@ export default {
         process.env.CUSTOMPATH
       }/admin/orders?page=${page}`;
       vm.$http.get(url).then((response) => {
-        vm.isLoading = false;
         vm.orders = response.data.orders;
         vm.pages = response.data.pagination;
       });
+      vm.isLoading = false;
     },
     sortOrderByPaid() {
       const vm = this;

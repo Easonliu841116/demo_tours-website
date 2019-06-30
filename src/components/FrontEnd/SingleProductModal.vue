@@ -48,20 +48,21 @@
               </div>
               </div>
             <select name class="form-control mt-3"
-            v-model="productData.num">
-              <option value="" disabled selected>請選擇數量</option>
+            v-model="qty">
+              <option value="0" disabled>請選擇人數</option>
               <option
+                v-for="num in 10"
+                :key="num"
                 :value="num"
-                v-for="(num, key) in 10"
-                :key="key"
-              >共 {{num}} {{productData.unit}}</option>
+              >一共 {{num}} {{productData.unit}}
+              </option>
             </select>
           </div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-primary"
-              @click="emitAddToCart(productData.id, productData.num)"
+              @click="emitAddToCart(productData.id, qty)"
             >
               加到購物車
             </button>
@@ -73,8 +74,19 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      qty: 0,
+    };
+  },
   props: {
     productData: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+    cartData: {
       type: Object,
       default() {
         return {};
@@ -84,6 +96,11 @@ export default {
   methods: {
     emitAddToCart(id, num) {
       this.$emit('emitAddToCart', id, num);
+    },
+  },
+  watch: {
+    cartData() {
+      this.qty = 0;
     },
   },
 };

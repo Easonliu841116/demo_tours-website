@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <Navbar :registerShowJudge = false />
+    <Navbar :navItemShowJudge = "'register'"/>
     <div class="d-flex justify-content-center align-items-center
     vw-100 vh-100 bg-image">
       <form class="form-signin bg-light shadow rounded pt-4 pb-2"
