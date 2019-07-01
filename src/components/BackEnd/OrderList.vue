@@ -20,7 +20,7 @@
         <tr v-for="(item, key) in orders" :key="key">
           <td>{{item.create_at | DateFilter}}</td>
           <td></td>
-          <td>{{item.user.email}}</td>
+          <td v-if="item.user">{{item.user.email}}</td>
           <td>
             <ul class="list-unstyled" v-for="(el, key) in item.products" :key="key">
               <li>

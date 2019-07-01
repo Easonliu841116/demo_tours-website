@@ -4,7 +4,7 @@
     <nav id="navbar" class="navbar navbar-expand-lg transparent fixed-top">
       <div class="nav-item">
         <a class="nav-link c-nav-link text-white h3 font-weight-bolder rounded ml-2 mb-0" href="#"
-        @click.prevent="toIndex">伊森旅遊</a>
+        @click.prevent="toPage('index')">伊森旅遊</a>
       </div>
       <button
         class="navbar-toggler h3"
@@ -21,14 +21,14 @@
         <ul class="navbar-nav mr-auto ml-3">
           <li class="nav-item ml-2 py-2">
             <a class="nav-link c-nav-link text-white h6 rounded mb-0" href="#"
-            @click.prevent="toTours">
+            @click.prevent="toPage('tours')">
               <i class="fas fa-plane"></i>
               <span class="font-weight-bold">&nbsp;行程一覽</span>
             </a>
           </li>
           <li class="nav-item ml-2 py-2" v-if="navItemShowJudge === 'tours'">
             <a class="nav-link c-nav-link text-white h6 rounded mb-0"
-            href="#" @click.prevent="toCheckout">
+            href="#" @click.prevent="toPage('checkout')">
               <div>
                 <i class="fas fa-shopping-cart"></i>&nbsp;購物車
                 <small class="bg-danger rounded-circle text-white
@@ -45,7 +45,7 @@
             href="#"
             tabindex="-1"
             aria-disabled="true"
-            @click.prevent="toRegister"
+            @click.prevent="toPage('register')"
           >
             <i class="fas fa-cog"></i>
             <span class="font-weight-bold">&nbsp;登入後台</span>
@@ -76,35 +76,21 @@ export default {
     };
   },
   methods: {
-    toIndex() {
+    toPage(el) {
       const vm = this;
+      let location = '';
+      if (el === 'index') {
+        location = '/';
+      } else if (el === 'tours') {
+        location = '/tours';
+      } else if (el === 'checkout') {
+        location = '/checkout';
+      } else {
+        location = 'register';
+      }
       vm.isLoading = true;
       setTimeout(() => {
-        window.location.href = './#/';
-        vm.isLoading = false;
-      }, 750);
-    },
-    toRegister() {
-      const vm = this;
-      vm.isLoading = true;
-      setTimeout(() => {
-        window.location.href = './#/register';
-        vm.isLoading = false;
-      }, 750);
-    },
-    toTours() {
-      const vm = this;
-      vm.isLoading = true;
-      setTimeout(() => {
-        window.location.href = './#/tours';
-        vm.isLoading = false;
-      }, 750);
-    },
-    toCheckout() {
-      const vm = this;
-      vm.isLoading = true;
-      setTimeout(() => {
-        window.location.href = './#/checkout';
+        vm.$router.push(location);
         vm.isLoading = false;
       }, 750);
     },
