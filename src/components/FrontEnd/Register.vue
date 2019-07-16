@@ -32,8 +32,8 @@
             </label>
           </div>
           <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
-          <a class=" my-3 text-center nav-link p-0 font-weight-bold" href="#"
-          @click="goBack">返回上一頁</a>
+          <a class=" my-3 text-center nav-link p-0
+          font-weight-bold" href="#" @click.prevent="goBack">返回行程一覽</a>
           <p class=" text-muted text-center">伊森旅遊&copy; 2019</p>
       </form>
     </div>
@@ -87,9 +87,9 @@ export default {
       const vm = this;
       vm.isLoading = true;
       setTimeout(() => {
-        window.history.back();
+        vm.$router.push('tours');
+        vm.isLoading = false;
       }, 750);
-      vm.isLoading = false;
     },
   },
   components: {
