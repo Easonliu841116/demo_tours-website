@@ -28,7 +28,7 @@
 
 #### 主要使用技術及 Plugins
 
- `Vue CLI`  `Vue Router`  `RESTful API 串接`  `RWD`  `Bootstrap 4`  `jQuery`  `Font Awesome`  `ES6`  `SCSS`  `ESLint-Airbnb` `WebPack` `VeeValidate`  `vue-axios`  `vue-loading-overlay`  `Evnet Bus`
+ `Vue CLI`  `Vue Router`  `RESTful API 串接`  `RWD`  `Bootstrap 4`  `jQuery`  `Font Awesome`  `ES6`  `SCSS`  `ESLint-Airbnb` `Webpack` `VeeValidate`  `vue-axios`  `vue-loading-overlay`  `Evnet Bus`
 
 ## 網頁展示
 
